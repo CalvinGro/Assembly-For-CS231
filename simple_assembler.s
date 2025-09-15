@@ -1,3 +1,13 @@
+# Title:       simple_assember.s
+# Auther:      Calvin Gross
+# Date:        9/13/25
+# Description: This program takes in a string from the user. Then
+#              it prints it out one char at a time on seprate lines.
+#              Then it prints the length of the string.
+
+
+
+
 # section to initialize vars 
          .section .data
 
