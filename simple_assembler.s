@@ -46,7 +46,7 @@ main:
         call    fgets
 
         # preping for while loop
-        movq    %rax, %rbx      # storing the address of stdin in rbx because rax is cleared for printf.
+        movq    %rax, %rbx      # storing the address of inputstr in rbx because rax is cleared for printf.
         xorq    %rbp, %rbp      # rbp = 0 counter for str length.
 
         
@@ -57,7 +57,7 @@ main:
 
 # prints each char on a new line using a while loop.
 while:  cmpb    $0, (%rbx)      # comparing what is actually at rbx - because of the parentheses. jump to next if \0
-        je     next
+        je      next
 
         cmpb    $10, (%rbx)     # jump to next if \n found. (10 is ascii value of \n)
         je      next
@@ -79,7 +79,7 @@ while:  cmpb    $0, (%rbx)      # comparing what is actually at rbx - because of
 next:   leaq    lenmsg, %rdi    # sets lenmsg as first arg for printf
         movq    %rbp, %rsi      # sets counter(%rbp) as the second arg for printf
         xorq    %rax, %rax      # clears %rax
-        call printf             
+        call    printf             
 
 
 # exits program
