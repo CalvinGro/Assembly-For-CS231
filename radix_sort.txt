@@ -1,0 +1,12 @@
+Radix Sort Analysis
+- Calvin Gross
+- 10/21/25
+
+    This assembly radix sort used 2n space by making use of C's malloc function
+to allocate the needed heap memory for the user specified size of the array. It
+used only two arrays of the given size: the initial array and a bin array. 
+    It works correctly and efficiency, I wrote a function that loops through the
+array comparing each number to the one that appeared before it, and check if it
+was larger. I then print the findings of that function.
+
+
