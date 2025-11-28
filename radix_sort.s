@@ -51,9 +51,9 @@ out_order:      .asciz  "\n\nThe check function found that the numbers are out o
 # and receives user input.
 main:
     # print intro message
-    print1 intro_msg
+    sys_print intro_msg
     
-    print1 count_msg                # print message to recive user input for how many numbers to generate
+    sys_print count_msg                # print message to recive user input for how many numbers to generate
     scan_int arr_len                # recive user input and store in address at arr_len
     print2 show_count, (arr_len)      # print number inputed
 

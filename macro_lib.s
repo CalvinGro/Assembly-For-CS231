@@ -1,6 +1,8 @@
 /*
 Author - Calvin Gross
-Date - 10/14/25 to 10/21/25
+Date     - 10/14/25 
+Modified - 10/21/25
+Modified - 11/20/25
 Project Title - Radix Sort Program
 Helper File Title - Macro Library
 Description -   This is a library of the macros I use throughout this
@@ -17,6 +19,22 @@ Description -   This is a library of the macros I use throughout this
 
         .section .text
 int_fmt:        .asciz  "%d"    # string to take in an integer for the scaf
+
+
+# Function to print a string using only one argument, a
+# string address. It uses syscalls instead of printf.
+sys_print: .macro  a
+
+    movq $1, %rax
+    movq $1, %rdi
+    leaq \a, %rsi
+    xorq %rdx, %rdx
+    call fn_find_size           # find the size of the string and store it in %rdx
+    syscall 
+        .endm
+
+
+sys_print_int: .macro a
 
 
 
@@ -59,9 +77,16 @@ generate_rand_num: .macro
     movq    $50000, %r15    # move the divisor, 50000, into %r15
     xorq    %rdx, %rdx      # clear spot for remainder
     divq    %r15            # remainder now in %dx, cause it is modded by 50000 so it can be stored in 2 bytes
-    addw    $1, %dx         # add 1 so range goes from 0-49,999 to 1-50,000.
+    incw    %dx             # add 1 so range goes from 0-49,999 to 1-50,000.
         .endm               # A random number from 1-50,000 is now stored in %dx
 
+    
+fn_find_size:               # find the size of the string
+    cmpb $0, (%rsi, %rdx)
+    je   done_finding
 
-    
-    
+    incq %rdx
+    jmp  fn_find_size
+done_finding:
+    ret
+
