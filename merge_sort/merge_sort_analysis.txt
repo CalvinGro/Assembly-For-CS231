@@ -1,0 +1,36 @@
+Merge Sort Analysis
+- Calvin Gross
+- 12/7/25
+
+    This merge sort was written to use O(2n) space by using a seperate
+bin during the merging process to store the integers in while sorting 
+them. This uses O(nlog(n)) time due to there being log(n) layers of 
+merges done to sort the array. This can be seen in the provided table:
+_________________________________________________________
+ints sorted  | 128 | 256  | 512  | 1024 | 2048  | 4096  |
+_________________________________________________________
+    merges   | 127 | 255  | 511  | 1023 | 2047  | 4095  |
+_________________________________________________________
+    count of |     |      |      |      |       |       |
+    numbers  | 769 | 1793 | 4097 | 9217 | 20481 | 45057 |
+    merged   |     |      |      |      |       |       |
+_________________________________________________________
+
+    In the following example there are 16 bars on each line, 
+each bar represents an integer and each line represents a layer 
+of merges. As can be seen there are multiple merges on each 
+layer, but each layer has the same computational complexity O(n)
+(same number of bars). In the first line 8 merges occur, then the 
+next has 4, then 2, then 1. Thus a total of 15 merges occur when
+sorting 16 numbers. This pattern repeats for all sequences of
+numbers. Thus, merges have a computational complexity of O(n).
+        ________________
+   ________         ________
+ ____    ____     ____    ____
+__  __  __  __   __  __  __  __ 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    I wrote every part of this merge sort project in assembly 
+without using any C calls. I also structured the main file to primarly
+rely on macros. Thus, allowing me to encapsulate much complexity and
+improve the readability of the main file.
